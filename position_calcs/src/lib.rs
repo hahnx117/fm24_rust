@@ -18,7 +18,6 @@ pub fn retrieve_important_attributes (position_name: &str) {
     }
 }
 
-//pub fn position_calc(table: table_extract::Table) {
 fn position_calc(position_name: &str, att1: &str, att2: &str, att3: &str, att4: &str, att5: &str) {
 
     let mut top_3_tuple: ((&str, i32), (&str, i32), (&str, i32))= (("No one", 0),("No one", 0), ("No one", 0));
