@@ -1,73 +1,48 @@
-pub fn goalkeeper_calc(table: table_extract::Table) {
+use std::fs;
 
-    let mut top_3_tuple: ((&str, i32), (&str, i32), (&str, i32))= (("No one", 0),("No one", 0), ("No one", 0));
+const DATA_PATH: &str = "/home/david/rust_projects/fm24_rust/data/attributes.html";
 
-    for row in &table {
-        let name: &str = row.get("Name").unwrap_or("No name");
-        let handling: i32 = row.get("Han").unwrap_or("0").parse().unwrap();
-        let positioning: i32 = row.get("Pos").unwrap_or("0").parse().unwrap();
-        let reflexes: i32 = row.get("Ref").unwrap_or("0").parse().unwrap();
-        let one_on_ones: i32 = row.get("1v1").unwrap_or("0").parse().unwrap();
-        let aerial_ability: i32 = row.get("Aer").unwrap_or("0").parse().unwrap();
-        
-        let total_goalkeeping: i32 = handling + positioning + reflexes + one_on_ones + aerial_ability;
-        
-        if total_goalkeeping > top_3_tuple.0.1 {
-            top_3_tuple.0.0 = name;
-            top_3_tuple.0.1 = total_goalkeeping;
-        }
-        else if total_goalkeeping > top_3_tuple.1.1 {
-            top_3_tuple.1.0 = name;
-            top_3_tuple.1.1 = total_goalkeeping;
-        }
-        else if total_goalkeeping > top_3_tuple.2.1 {
-            top_3_tuple.2.0 = name;
-            top_3_tuple.2.1 = total_goalkeeping;
-        }
+pub fn retrieve_important_attributes (position_name: &str) {
+    match position_name {
+        "Goalkeepers" => position_calc(position_name, "Han", "Pos", "Ref", "1v1", "Aer"),
+        _ => println!("Not Yet Implemented...")
     }
-
-    println!(
-        "The top three keepers are:\n\n1. {} ({})\n2. {} ({})\n3. {} ({})\n",
-        top_3_tuple.0.0,
-        top_3_tuple.0.1,
-        top_3_tuple.1.0,
-        top_3_tuple.1.1,
-        top_3_tuple.2.0,
-        top_3_tuple.2.1
-    )
-
 }
 
-pub fn central_defender_calc(table: table_extract::Table) {
+//pub fn position_calc(table: table_extract::Table) {
+fn position_calc(position_name: &str, att1: &str, att2: &str, att3: &str, att4: &str, att5: &str) {
 
     let mut top_3_tuple: ((&str, i32), (&str, i32), (&str, i32))= (("No one", 0),("No one", 0), ("No one", 0));
 
+    let data: String = fs::read_to_string(DATA_PATH).expect("Should have been able to read the file.");
+    let table: table_extract::Table = table_extract::Table::find_first(&data).unwrap();
+
     for row in &table {
         let name: &str = row.get("Name").unwrap_or("No name");
-        let tackling: i32 = row.get("Tck").unwrap_or("0").parse().unwrap();
-        let jumping: i32 = row.get("Jum").unwrap_or("0").parse().unwrap();
-        let strength: i32 = row.get("Str").unwrap_or("0").parse().unwrap();
-        let marking: i32 = row.get("Mar").unwrap_or("0").parse().unwrap();
-        let concentration: i32 = row.get("Cnt").unwrap_or("0").parse().unwrap();
+        let stat1: i32 = row.get(att1).unwrap_or("0").parse().unwrap();
+        let stat2: i32 = row.get(att2).unwrap_or("0").parse().unwrap();
+        let stat3: i32 = row.get(att3).unwrap_or("0").parse().unwrap();
+        let stat4: i32 = row.get(att4).unwrap_or("0").parse().unwrap();
+        let stat5: i32 = row.get(att5).unwrap_or("0").parse().unwrap();
         
-        let total_defending: i32 = tackling + jumping + strength + marking + concentration;
+        let total_stats: i32 = stat1 + stat2 + stat3 + stat4 + stat5;
         
-        if total_defending > top_3_tuple.0.1 {
+        if total_stats > top_3_tuple.0.1 {
             top_3_tuple.0.0 = name;
-            top_3_tuple.0.1 = total_defending;
+            top_3_tuple.0.1 = total_stats;
         }
-        else if total_defending > top_3_tuple.1.1 {
+        else if total_stats > top_3_tuple.1.1 {
             top_3_tuple.1.0 = name;
-            top_3_tuple.1.1 = total_defending;
+            top_3_tuple.1.1 = total_stats;
         }
-        else if total_defending > top_3_tuple.2.1 {
+        else if total_stats > top_3_tuple.2.1 {
             top_3_tuple.2.0 = name;
-            top_3_tuple.2.1 = total_defending;
+            top_3_tuple.2.1 = total_stats;
         }
     }
 
     println!(
-        "The top three central defenders are:\n\n1. {} ({})\n2. {} ({})\n3. {} ({})\n",
+        "The top three {position_name} are:\n\n1. {} ({})\n2. {} ({})\n3. {} ({})\n",
         top_3_tuple.0.0,
         top_3_tuple.0.1,
         top_3_tuple.1.0,
