@@ -1,11 +1,26 @@
 # FM24 Stumbling Through Rust
 
-## Add a Crate from upstream
+## Rust notes
+### Add a Crate from upstream
 ```
 cargo add <crate_name>
 ```
 
-## Attributes for players
+### Create a library and add it to your project
+Create the library,
+
+```
+cargo new --lib <library_name>
+```
+
+After that, in the main directory, add the library,
+
+```
+cargo add <library_name>
+```
+
+## FM Notes
+### Attributes for players
 + Reg: Registration
 + Inf
 + Name
@@ -64,7 +79,7 @@ cargo add <crate_name>
 + Cor
 + Club
 
-## Key Attriibutes by Position
+### Key Attriibutes by Position
 https://community.sigames.com/forums/topic/183726-key-attributes-for-players-in-certain-positions/
 
 + Goalkeepers (GK)
@@ -94,7 +109,7 @@ https://community.sigames.com/forums/topic/183726-key-attributes-for-players-in-
 + Towering Forwards (FC)
     + Finishing, Composure, Strength, Jumping, Anticipation
 
-## Key Metrics per POsition
+### Key Metrics per POsition
 https://community.sigames.com/forums/topic/577736-key-metrics-kpi-for-each-position/
 
 ## Notes

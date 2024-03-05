@@ -1,4 +1,4 @@
-workspace = {}
+workspace = { members = ["position_calcs"] }
 [package]
 name = "fm24_rust"
 version = "0.1.0"
@@ -9,4 +9,5 @@ edition = "2021"
 [dependencies]
 html_parser = "0.7.0"
 htmler = "0.1.1"
+position_calcs = { version = "0.1.0", path = "position_calcs" }
 table-extract = "0.2.3"
