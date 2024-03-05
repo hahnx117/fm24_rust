@@ -96,3 +96,5 @@ https://community.sigames.com/forums/topic/183726-key-attributes-for-players-in-
 
 ## Key Metrics per POsition
 https://community.sigames.com/forums/topic/577736-key-metrics-kpi-for-each-position/
+
+## Notes
