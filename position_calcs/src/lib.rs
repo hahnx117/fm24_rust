@@ -1,6 +1,6 @@
 pub fn goalkeeper_calc(table: table_extract::Table) {
 
-    let mut goalkeeper_top_3_tuple= (("No one", 0),("No one", 0), ("No one", 0));
+    let mut goalkeeper_top_3_tuple: ((&str, i32), (&str, i32), (&str, i32))= (("No one", 0),("No one", 0), ("No one", 0));
 
     for row in &table {
         let name: &str = row.get("Name").unwrap_or("No name");
@@ -35,5 +35,6 @@ pub fn goalkeeper_calc(table: table_extract::Table) {
         goalkeeper_top_3_tuple.2.0,
         goalkeeper_top_3_tuple.2.1
     )
+
 }
 

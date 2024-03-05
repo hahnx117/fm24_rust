@@ -11,3 +11,4 @@ html_parser = "0.7.0"
 htmler = "0.1.1"
 position_calcs = { version = "0.1.0", path = "position_calcs" }
 table-extract = "0.2.3"
+text_io = "0.1.12"

@@ -2,6 +2,7 @@
 
 use std::fs;
 use position_calcs;
+use text_io::read;
 
 fn print_type_of<T>(_: &T) {
     println!("{}", std::any::type_name::<T>())
@@ -14,19 +15,19 @@ fn main() {
     //println!("{}", data);
 
     let table = table_extract::Table::find_first(&data).unwrap();
-    //let table = table_extract::Table::find_by_headers(&data, &["data"]).unwrap();
 
-    //println!("{:#?}", table);
+    println!(
+        "Please choose from the following:\n
+        1: Goalkeepers
+        2: Defenders
+        3. Midfielders
+        4. Strikers"
+    );
 
-    //for row in &table {
-    //    println!(
-    //        "{} is worth {} and is on {} wages",
-    //        row.get("Name").unwrap_or("<name missing>"),
-    //        row.get("Transfer Value").unwrap_or("<transfer value missing>"),
-    //        row.get("Wage").unwrap_or("<wage value missing>")
-    //    )
-    //}
-    position_calcs::goalkeeper_calc(table);
+    let user_choice: i32 = read!();
 
-
+    match user_choice {
+        1 => position_calcs::goalkeeper_calc(table),
+        _ => println!("Not yet implemented.")
+    }
 }
