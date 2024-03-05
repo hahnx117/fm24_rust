@@ -1,4 +1,4 @@
-fn goalkeeper_calc(table: table_extract::Table) {
+pub fn goalkeeper_calc(table: table_extract::Table) {
 
     let mut goalkeeper_top_3_tuple= (("No one", 0),("No one", 0), ("No one", 0));
 
@@ -37,13 +37,3 @@ fn goalkeeper_calc(table: table_extract::Table) {
     )
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}

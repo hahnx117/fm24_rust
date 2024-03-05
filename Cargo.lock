@@ -549,6 +549,9 @@ dependencies = [
 [[package]]
 name = "position_calcs"
 version = "0.1.0"
+dependencies = [
+ "table-extract",
+]
 
 [[package]]
 name = "ppv-lite86"

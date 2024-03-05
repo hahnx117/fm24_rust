@@ -26,7 +26,7 @@ fn main() {
     //        row.get("Wage").unwrap_or("<wage value missing>")
     //    )
     //}
-    goalkeeper_calc(table);
+    position_calcs::goalkeeper_calc(table);
 
 
 }

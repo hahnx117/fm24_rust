@@ -18,6 +18,7 @@ After that, in the main directory, add the library,
 ```
 cargo add <library_name>
 ```
+> Note: if there are dependencies for the lib, they will not be inherited and need to be specifically added via `cargo add <dep>` in the lib directory.
 
 ## FM Notes
 ### Attributes for players
