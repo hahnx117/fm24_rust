@@ -19,15 +19,17 @@ fn main() {
     println!(
         "Please choose from the following:\n
         1: Goalkeepers
-        2: Defenders
-        3. Midfielders
-        4. Strikers"
+        2: Central Defenders
+        3: Wing Backs
+        4: Full Backs
+        "
     );
 
     let user_choice: i32 = read!();
 
     match user_choice {
         1 => position_calcs::goalkeeper_calc(table),
+        2 => position_calcs::central_defender_calc(table),
         _ => println!("Not yet implemented.")
     }
 }
