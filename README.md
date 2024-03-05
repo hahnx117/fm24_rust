@@ -98,3 +98,5 @@ https://community.sigames.com/forums/topic/183726-key-attributes-for-players-in-
 https://community.sigames.com/forums/topic/577736-key-metrics-kpi-for-each-position/
 
 ## Notes
+
++ Can I put the table processing in a lib?
