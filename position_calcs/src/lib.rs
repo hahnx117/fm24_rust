@@ -5,6 +5,15 @@ const DATA_PATH: &str = "/home/david/rust_projects/fm24_rust/data/attributes.htm
 pub fn retrieve_important_attributes (position_name: &str) {
     match position_name {
         "Goalkeepers" => position_calc(position_name, "Han", "Pos", "Ref", "1v1", "Aer"),
+        "Central Defenders" => position_calc(position_name, "Tck", "Jum", "Str", "Mar", "Cnt"),
+        "Wing Backs" => position_calc(position_name, "Cro", "Tea", "Pac", "Mar", "Dec"),
+        "Full Backs" => position_calc(position_name, "Tck", "Tea", "Pac", "Mar", "Dec"),
+        "Defensive Midfielders" => position_calc(position_name, "Tck", "Pas", "Bra", "Det", "Wor"),
+        "Central Midfielders" => position_calc(position_name, "Tck", "Pos", "Tea", "Dec", "Det"),
+        "Wide Midfielders" => position_calc(position_name, "Pas", "Cro", "Dri", "Pac", "Tea"),
+        "Wingers" => position_calc(position_name, "Pas", "Cro", "Dri", "Pac", "Tea"),
+        "Central Attacking Mids" => position_calc(position_name, "Pas", "Dec", "Fla", "Tec", "Fir"),
+        "Strikers" => position_calc(position_name, "Fin", "Cmp", "Pac", "Acc", "Dri"),
         _ => println!("Not Yet Implemented...")
     }
 }
