@@ -18,6 +18,16 @@ pub fn retrieve_important_attributes (position_name: &str) {
     }
 }
 
+fn hyphen_filter(stat_string: &str) -> i32 {
+    if stat_string.contains("-") {
+        let split_stat = stat_string.split("-").collect::<Vec<_>>();
+        return split_stat[0].parse().unwrap();
+    }
+    else {
+        return stat_string.parse().unwrap()
+    }
+}
+
 fn position_calc(position_name: &str, att1: &str, att2: &str, att3: &str, att4: &str, att5: &str) {
 
     let mut top_3_tuple: ((&str, i32), (&str, i32), (&str, i32))= (("No one", 0),("No one", 0), ("No one", 0));
@@ -27,11 +37,11 @@ fn position_calc(position_name: &str, att1: &str, att2: &str, att3: &str, att4: 
 
     for row in &table {
         let name: &str = row.get("Name").unwrap_or("No name");
-        let stat1: i32 = row.get(att1).unwrap_or("0").parse().unwrap();
-        let stat2: i32 = row.get(att2).unwrap_or("0").parse().unwrap();
-        let stat3: i32 = row.get(att3).unwrap_or("0").parse().unwrap();
-        let stat4: i32 = row.get(att4).unwrap_or("0").parse().unwrap();
-        let stat5: i32 = row.get(att5).unwrap_or("0").parse().unwrap();
+        let stat1: i32 = hyphen_filter(row.get(att1).unwrap_or("0"));
+        let stat2: i32 = hyphen_filter(row.get(att2).unwrap_or("0"));
+        let stat3: i32 = hyphen_filter(row.get(att3).unwrap_or("0"));
+        let stat4: i32 = hyphen_filter(row.get(att4).unwrap_or("0"));
+        let stat5: i32 = hyphen_filter(row.get(att5).unwrap_or("0"));
         
         let total_stats: i32 = stat1 + stat2 + stat3 + stat4 + stat5;
         
